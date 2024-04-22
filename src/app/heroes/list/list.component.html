@@ -1,0 +1,29 @@
+
+<h3>Listado de Héroes</h3>
+
+<!--Si no hay ningún héroe borredo no hay necesidad de mostrar este h3-->
+<!--En la estructura del html aparece este div-->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Héroe borrado <small class="text-danger"> {{deletedHero}} </small></h3>
+</div>
+
+<!--ng-template es un componente de Angular, es un div que no existe, solo muestra su contenido-->
+<!--En la estructura del html solo aparece el h3-->
+<ng-template #nothingWasDeleted>
+<h3>No ha borrado nada</h3>
+</ng-template>
+
+<button
+  *ngIf="heroNames.length > 0"
+  (click)="removeLastHero()"
+  class="btn btn-outline-danger">
+  Borrar último héroe
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames" class="list-group-item">
+    {{ name }}
+  </li>
+
+</ul>
+
